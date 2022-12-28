@@ -124,17 +124,6 @@
 
     <build>
         <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
-                <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
                         
         	<!-- collects all the jars on the classpath and builds a single, runnable über-jar -->
 			<plugin>
@@ -200,15 +189,12 @@
     <repositories>
         <repository>
             <id>spring-milestone</id>
-            <url>https://repo.spring.io/libs-release</url>
+            <name>Spring Milestone Repository</name>
+            <url>https://repo.spring.io/milestone</url>
+			<snapshots>
+            	<enabled>true</enabled>
+        	</snapshots>       			
         </repository>
-    </repositories>
+     </repositories>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-milestone</id>
-            <url>https://repo.spring.io/libs-release</url>
-        </pluginRepository>
-    </pluginRepositories>
-        
 </project>
