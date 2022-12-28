@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  	<modelVersion>4.0.0</modelVersion>
+
+  	<!-- Inherit defaults from Spring Boot -->
+   	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.6</version>  <!-- lookup parent from repository -->
+		<relativePath />
+	</parent>
+	  	
+  	<groupId>com.hpe</groupId>
+  	<artifactId>random-name</artifactId>
+  	<version>0.0.1</version>
+  	
+  	<name>RandomName</name>
+	<description>Random Name Generator</description>
+  	<inceptionYear>2020</inceptionYear>
+	<developers>
+		<developer>
+      		<id>kulkeez</id>
+      		<name>Vikram Kulkarni</name>
+      		<email>kulkeez@yahoo.com</email>
+      		<url>http://www.hpe.com</url>
+			<roles>
+				<role>Programmer</role>
+			</roles>
+			<timezone>+5</timezone>  
+		</developer>
+  	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>17</java.version>
+		<requireMavenVersion>3.6</requireMavenVersion>
+		<maven.test.skip>false</maven.test.skip>		
+	</properties>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <!-- This profile is active by default.
+                     When this profile is active, only unit tests are run -->
+                <activeByDefault>true</activeByDefault>
+                
+                <!-- activate if system properties 'env=dev' -->
+                <property>
+                    <name>env</name>
+                    <value>dev</value>
+                </property>
+            </activation>
+            <properties>
+            	<maven.test.skip>false</maven.test.skip>
+            </properties>		
+        </profile>
+        
+        <profile>
+            <id>prod</id>
+            <activation>
+                <!-- activate if system properties 'env=prod' -->
+                <property>
+                    <name>env</name>
+                    <value>prod</value>
+                </property>
+            </activation>
+            <properties>
+            </properties>
+        </profile>
+               
+    </profiles>
+    	
+    <dependencies>
+
+		<!--  To avoid boilerplate code i.e. need for declaring an instance of a logger -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		
+		<!--  By default, Spring Boot use Tomcat as the default embedded server.  	-->
+	    <dependency>
+	      <groupId>org.springframework.boot</groupId>
+	      <artifactId>spring-boot-starter-web</artifactId>
+	    </dependency>
+	        
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-test</artifactId>
+		    <scope>test</scope>
+		</dependency>
+
+		<!--  Enable Actuator endpoints for monitoring health -->
+		<!--  A new set of RESTful end points are added to the application such as /env, /health, /info, /metrics, /trace and /dump -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>	
+				       			
+		<!-- hot swapping, disable cache for template, enable live reload -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+                  
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+                        
+        	<!-- collects all the jars on the classpath and builds a single, runnable über-jar -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+                	<execution>
+                    	<goals>
+                        	<goal>build-info</goal>
+                    	</goals>
+                	</execution>
+            	</executions>
+			</plugin>
+			
+        </plugins>
+        
+		<!-- share the same plugin configuration across all project modules -->
+		<!-- and lock down plugin versions to avoid using Maven defaults    -->
+		<pluginManagement>
+		  <plugins>
+		  						
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>${maven.enforcer.plugin}</version>
+				<executions>
+					<execution>
+						<id>enforce-versions</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>${requireMavenVersion}</version>
+								</requireMavenVersion>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!-- display active profile in compile phase -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-help-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>show-profiles</id>
+						<phase>none</phase>  <!--  change to 'compile' to debug & troubleshoot -->
+						<goals>
+							<goal>active-profiles</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>   						
+				
+		  </plugins>
+		</pluginManagement>
+		        
+    </build>
+
+    <repositories>
+        <repository>
+            <id>spring-milestone</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestone</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </pluginRepository>
+    </pluginRepositories>
+        
+</project>
