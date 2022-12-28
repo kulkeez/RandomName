@@ -1,7 +1,10 @@
-# Docker 101 :tada: :sparkles: :v: 
+# Spring-Boot-->Docker-->Kubernetes 101 :tada: :sparkles: :v: 
 
 You cloned a project that demonstrates use of Docker containers to deploy a Java application using Spring Boot.
 The Docker image is built using a Dockerfile`and is based on the small [Alpine Linux](https://alpinelinux.org/ "Alpine Linux") base image (~80 MB).
+
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=master&repo=583019519&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=SouthEastAsia)
 
 ## Prerequisites
 
@@ -41,16 +44,18 @@ Next, examine the `Dockerfile` in the root directory of this project - it has th
 FROM openjdk:jre-alpine
 MAINTAINER Vikram Kulkarni (vikram.kulkarni@hpe.com)
 
-LABEL name="Alpine Linux Base Image" \
-    vendor="Alpine" \
+LABEL name="RandomName Generator" \
     license="GPLv2" \
 	maintainer="Vikram Kulkarni" \
     build-date="20200314"
-	
-COPY /target/random-name-0.0.1.jar /app/random-name-service.jar
 
-# tell how to run this container
-ENTRYPOINT ["java", "-jar", "/app/random-name-service.jar"]
+# copy Java binary into the container	
+COPY /target/random-name-0.0.1.jar /app.jar
+
+# tell how to run this container i.e. the default command
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+
+# tell the port number the container should expose
 EXPOSE 8080
 ```
 	
