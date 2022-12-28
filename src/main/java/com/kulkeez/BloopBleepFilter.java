@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 * A Simple Filter to observe filter chaining - produces BLOOP and BLEEP in the logs
 * Dedicated to Danny Kaye & Kishore da (Kishore Kumar) - Kishore lives !
 * 
-* @author kulkeez
+* @author <a href="mailto:kulkeez@yahoo.com">Vikram Kulkarni</a>
 *
 */
 @Component

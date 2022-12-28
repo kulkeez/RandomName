@@ -1,12 +1,18 @@
 package com.kulkeez;
 
 import java.util.Arrays;
+import java.util.Locale;
+import java.text.NumberFormat;
+
+import java.sql.Timestamp;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
@@ -39,11 +45,12 @@ import org.springframework.context.annotation.Bean;
  * Autodiscovery is performed by Spring using the @ComponentScan which looks at classes that use
  * special stereotype annotations: @Component, @Controller, @Repository, @Service, @Configuration
  * 
- * @author kulkeez
+ * @author <a href="mailto:kulkeez@yahoo.com">Vikram Kulkarni</a>
  *
  */
 //convenience annotation that adds @Configuration, @EnableAutoConfiguration, @ComponentScan
 @SpringBootApplication	
+@Slf4j
 public class RandomNameApplication {
 
 	/**
@@ -55,8 +62,12 @@ public class RandomNameApplication {
 	 */
 	public static void main(String[] args) {
 		// Launch the application
+		log.info("Launching the Spring Data application ...");
+
+		Timestamp tOne = new Timestamp(System.currentTimeMillis());
         ApplicationContext ctx = SpringApplication.run(RandomNameApplication.class, args);
 
+		log.info("Launched Spring Data application at time: {} ", tOne);
     }
 	
 	
@@ -74,16 +85,23 @@ public class RandomNameApplication {
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
 
-            System.out.println("Let's inspect the beans provided by Spring Boot:");
+            log.info("Let's inspect the beans provided by Spring Boot:");
 
             String[] beanNames = ctx.getBeanDefinitionNames();
             Arrays.sort(beanNames);
+
             for (String beanName : beanNames) {
-                System.out.println(beanName);
+                log.debug(beanName);
             }
-            System.out.println("Total Beans available in the Spring container: " + beanNames.length);
+            log.info("Total Beans available in the Spring container: " + beanNames.length);
 
         };
     }
-	
+
+
+	@Bean
+    public NumberFormat defaultNumberFormat() {
+        return NumberFormat.getCurrencyInstance(Locale.getDefault());
+    }
+
 }
