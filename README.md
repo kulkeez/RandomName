@@ -69,7 +69,7 @@ EXPOSE 8080
  * The dockerized 'Random Name Generator' can now be used by launching the Docker container using the command: ```docker run -d -p 8080:8080 name_generator:1.0 ```
  * Confirm that the container has been launched by running the command: ```docker ps ```
 
-![Docker commands](https://github.hpe.com/vikram-kulkarni/RandomName/blob/master/docker-random-name.jpg "")
+![Docker commands](https://github.com/kulkeez/RandomName/blob/master/docker-random-name.jpg "")
 
  * Next, launch a web browser and hit the URL: http://localhost:8080/
 You should see a response like: `Tue Mar 17 11:56:37 GMT 2020: Hello, ELECTRONIC_BIND! Greetings from RandomName Generator!`
