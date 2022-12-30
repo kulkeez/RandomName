@@ -1,4 +1,4 @@
-package com.kulkeez;
+package com.kulkeez.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
