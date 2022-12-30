@@ -1,4 +1,4 @@
-package com.kulkeez;
+package com.kulkeez.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

@@ -88,7 +88,10 @@ public class StatusController {
     	log.debug("Execution ID: {}", UUID.randomUUID().toString());
     	
 	    map.put("Execution ID #1", UUID.randomUUID().toString());
-	    map.put("Execution ID #2", UUID.randomUUID().toString());
+		map.put("Test Suite Name #1", "TestSuite-1");
+	    map.put("Test Script Name 1.1", "ConnectSMSFragment.jmx");
+	    map.put("Test Script Name 1.2", "SendSuccessSMSReportFragment.jmx");
+
 	    map.put("Execution ID #3", UUID.randomUUID().toString());
 	    map.put("Execution ID #4", UUID.randomUUID().toString());
 	    map.put("Execution ID #5", UUID.randomUUID().toString());
