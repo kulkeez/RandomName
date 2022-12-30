@@ -20,7 +20,7 @@ public class SmokeTest {
 	@Autowired
 	private HelloController controller;
 
-	//@Test
+	@Test
 	public void contextLoads() throws Exception {
 		assertThat(controller).isNotNull();
 	}
