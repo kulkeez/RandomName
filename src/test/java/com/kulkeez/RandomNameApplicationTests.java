@@ -10,6 +10,9 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 import org.springframework.http.MediaType;
 
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.Order;
 
 /**
@@ -18,6 +21,7 @@ import org.junit.jupiter.api.Order;
  * @author kulkeez
  *
  */
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class RandomNameApplicationTests {
 
