@@ -1,4 +1,4 @@
-package com.kulkeez;
+package com.kulkeez.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,7 +40,7 @@ public class HelloControllerTest {
 		mvc = MockMvcBuilders.standaloneSetup(new HelloController()).build();
 	}
 
-	//@Test
+	@Test
 	public void getHello() throws Exception {
 		log.debug("==== in getHello() ====");
 		mvc.perform(MockMvcRequestBuilders.get("/")
