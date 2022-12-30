@@ -8,6 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
+import org.springframework.http.MediaType;
+
+import org.junit.jupiter.api.Order;
+
 /**
  * 
  * 
@@ -20,9 +24,27 @@ public class RandomNameApplicationTests {
 	@Autowired
 	private WebTestClient webClient;
 
-	//@Test
-	public void exampleTest() {
-		this.webClient.get().uri("/").exchange().expectStatus().isOk()
-				.expectBody(String.class).isEqualTo("Greetings from RandomName Generator!");
+	@Test
+	@Order(1)
+	public void testIndexEndpointMessageNotEmpty() {
+		this.webClient.get()
+				.uri("/")
+				.exchange()
+				.expectStatus().isOk()
+				.expectHeader().contentType(MediaType.APPLICATION_JSON)
+				.expectBody()
+				.jsonPath("$.Message").isNotEmpty();
 	}
+
+	@Test
+	@Order(2)
+	public void testIndexEndpointApplicationText() {
+		this.webClient.get()
+				.uri("/")
+				.exchange()
+				.expectStatus().isOk()
+				.expectHeader().contentType(MediaType.APPLICATION_JSON)
+				.expectBody()
+				.jsonPath("$.Application").isEqualTo("Randome Name Generator");
+	}	
 }

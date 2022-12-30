@@ -53,6 +53,7 @@ public class HelloController {
     	HashMap<String, String> map = new HashMap<>();
 
 	    map.put("Date", new Date().toString());
+		map.put("Application", "Randome Name Generator");
 	    map.put("Message", String.format(template, name));
     	
         return map;

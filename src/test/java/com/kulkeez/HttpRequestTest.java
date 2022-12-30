@@ -28,7 +28,7 @@ public class HttpRequestTest {
 	@Autowired
 	private TestRestTemplate restTemplate;
 
-	//@Test
+	@Test
 	public void greetingShouldReturnDefaultMessage() throws Exception {
 		log.debug("Using port: {}", port);
 		
