@@ -47,13 +47,13 @@ public class HelloController {
 		// By default, all Spring beans are singletons
 		// Therefore, this Workaround: inject application context and get the bean manually
 		String name = ((RandomNameGenerator) ctx.getBean(RandomNameGenerator.class)).randomName().toUpperCase();
-		log.debug("Random Name: " + name);
+		log.debug("Random Name: {}", name);
 		
     	// create JSON structure containing Greetings
     	HashMap<String, String> map = new HashMap<>();
 
 	    map.put("Date", new Date().toString());
-		map.put("Application", "Randome Name Generator");
+		map.put("Application", "Random Name Generator");
 	    map.put("Message", String.format(template, name));
     	
         return map;
