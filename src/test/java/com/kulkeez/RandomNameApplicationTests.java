@@ -49,6 +49,6 @@ public class RandomNameApplicationTests {
 				.expectStatus().isOk()
 				.expectHeader().contentType(MediaType.APPLICATION_JSON)
 				.expectBody()
-				.jsonPath("$.Application").isEqualTo("Randome Name Generator");
+				.jsonPath("$.Application").isEqualTo("Random Name Generator");
 	}	
 }
