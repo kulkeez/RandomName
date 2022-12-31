@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: random-name-pod
+  namespace: default
+  labels:
+    app: random-name
+spec:
+  containers:
+  - name: random-name-container
+    image: random-name:0.1
+#    command: ['sh', '-c', 'echo Hello RandomName Generator! && sleep 3600']
