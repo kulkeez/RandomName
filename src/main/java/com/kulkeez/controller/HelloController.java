@@ -2,7 +2,7 @@ package com.kulkeez.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kulkeez.lambda.RandomNameGenerator;
+import com.kulkeez.RandomNameGenerator;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class HelloController {
 
-	private static final String template = ": Hello, %s! Greetings from RandomName Generator!";
+	private static final String template = "Hello, %s! Greetings from RandomName Generator!";
 	
 	@Autowired
     ApplicationContext ctx;
