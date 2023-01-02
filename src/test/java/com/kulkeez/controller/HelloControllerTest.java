@@ -1,18 +1,24 @@
 package com.kulkeez.controller;
 
-import org.junit.jupiter.api.BeforeEach;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.jupiter.api.Test;
 
+import static org.mockito.Mockito.when;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
-
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import com.kulkeez.RandomNameGenerator;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,27 +32,29 @@ import lombok.extern.slf4j.Slf4j;
  * @author kulkeez
  *
  */
-@SpringBootTest
-@AutoConfigureMockMvc
+
+@WebMvcTest(HelloController.class)
 @Slf4j
 public class HelloControllerTest {
 
 	@Autowired
-	private MockMvc mvc;
+	private MockMvc mockMvc;
 	
-	@BeforeEach
-	public void setUp() throws Exception {
-		log.debug("==== in setup() ====");
-		mvc = MockMvcBuilders.standaloneSetup(new HelloController()).build();
-	}
+	@MockBean
+	private RandomNameGenerator service;
 
 	@Test
 	public void getHello() throws Exception {
 		log.debug("==== in getHello() ====");
-		mvc.perform(MockMvcRequestBuilders.get("/")
-				.accept(MediaType.APPLICATION_JSON))
+
+		when(service.randomName()).thenReturn("IMPRESSIVE_KICK");
+
+		RequestBuilder request = MockMvcRequestBuilders.get("/");
+		MvcResult result = mockMvc.perform(request).andDo(print())
 				.andExpect(status().isOk())
-				.andExpect(content().string("Greetings from RandomName Generator!"));
+				.andExpect(content().json("{Application: \"Random Name Generator\", Message: \"Hello, IMPRESSIVE_KICK! Greetings from RandomName Generator!\"}"))
+				.andReturn();
+				
 	}
 	
 }
