@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
+ * Using AssertJ Assertions
  * 
  * @author kulkeez
  *
@@ -22,7 +23,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class HttpRequestTest {
 	
-	@Value(value="${local.server.port}")
+	// bind the above RANDOM_PORT
+    @Value(value="${local.server.port}")
 	private int port;
 
 	@Autowired
