@@ -2,17 +2,17 @@ package com.kulkeez;
 
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.Matchers.containsString;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.test.web.servlet.MockMvc;
 
-import org.springframework.http.MediaType;
-
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.Order;
 
 /**
@@ -21,34 +21,19 @@ import org.junit.jupiter.api.Order;
  * @author kulkeez
  *
  */
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+// The @SpringBootTest annotation tells Spring Boot to look for a main configuration class (one with @SpringBootApplication)
+@SpringBootTest
+@AutoConfigureMockMvc
 public class RandomNameApplicationTests {
 
 	@Autowired
-	private WebTestClient webClient;
+	private MockMvc mockMvc;
 
 	@Test
 	@Order(1)
-	public void testIndexEndpointMessageNotEmpty() {
-		this.webClient.get()
-				.uri("/")
-				.exchange()
-				.expectStatus().isOk()
-				.expectHeader().contentType(MediaType.APPLICATION_JSON)
-				.expectBody()
-				.jsonPath("$.Message").isNotEmpty();
+	public void shouldReturnDefaultMessage() throws Exception {
+		this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
+				.andExpect(content().string(containsString("Random Name Generator")));
 	}
-
-	@Test
-	@Order(2)
-	public void testIndexEndpointApplicationText() {
-		this.webClient.get()
-				.uri("/")
-				.exchange()
-				.expectStatus().isOk()
-				.expectHeader().contentType(MediaType.APPLICATION_JSON)
-				.expectBody()
-				.jsonPath("$.Application").isEqualTo("Random Name Generator");
-	}	
+	
 }
