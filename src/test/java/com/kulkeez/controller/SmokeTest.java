@@ -17,11 +17,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class SmokeTest {
 	
-	@Autowired
+	@Autowired		// controller is injected before the test methods are run
 	private HelloController controller;
 
 	@Test
 	public void contextLoads() throws Exception {
-		assertThat(controller).isNotNull();
+		assertThat(controller).isNotNull();		// convince ourself that the context is creating our controller
 	}
 }
