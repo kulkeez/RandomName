@@ -1,4 +1,4 @@
-package com.kulkeez.lambda;
+package com.kulkeez;
 
 import java.io.BufferedReader;
 import java.io.IOException;
