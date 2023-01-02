@@ -37,7 +37,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>17</java.version>
 		<requireMavenVersion>3.6</requireMavenVersion>
-		<maven.test.skip>false</maven.test.skip>		
+		<maven.test.skip>false</maven.test.skip>
+
 	</properties>
 
     <profiles>
@@ -93,11 +94,6 @@
 	      <groupId>org.springframework.boot</groupId>
 	      <artifactId>spring-boot-starter-web</artifactId>
 	    </dependency>
-
-	    <dependency>
-        	<groupId>org.springframework.boot</groupId>
-        	<artifactId>spring-boot-starter-webflux</artifactId>
-    	</dependency>
 
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
@@ -197,16 +193,5 @@
 		</pluginManagement>
 		        
     </build>
-
-    <repositories>
-        <repository>
-            <id>spring-milestone</id>
-            <name>Spring Milestone Repository</name>
-            <url>https://repo.spring.io/milestone</url>
-			<snapshots>
-            	<enabled>true</enabled>
-        	</snapshots>       			
-        </repository>
-     </repositories>
 
 </project>
