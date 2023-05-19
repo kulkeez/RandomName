@@ -8,7 +8,7 @@
    	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.7</version>  <!-- lookup parent from repository -->
+		<version>2.7.12</version>  <!-- lookup parent from repository -->
 		<relativePath />
 	</parent>
 	  	
@@ -36,9 +36,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>17</java.version>
-		<requireMavenVersion>3.6</requireMavenVersion>
+		<requireMavenVersion>3.9</requireMavenVersion>
 		<maven.test.skip>false</maven.test.skip>
-
 	</properties>
 
     <profiles>
