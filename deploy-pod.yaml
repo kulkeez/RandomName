@@ -8,5 +8,5 @@ metadata:
 spec:
   containers:
   - name: random-name-container
-    image: random-name:0.1
+    image: kulkeez/random-name:0.1
 #    command: ['sh', '-c', 'echo Hello RandomName Generator! && sleep 3600']

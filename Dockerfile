@@ -1,4 +1,4 @@
-FROM openjdk:jre-alpine
+FROM eclipse-temurin:17
 
 LABEL name="RandomName Generator" \
     license="GPLv2" \
