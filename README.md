@@ -26,8 +26,8 @@ Various Actuator RESTful end points which are added to this application are:
  * http://localhost:8080/actuator/env
  * http://localhost:8080/actuator/metrics 
 
-For more on Actuator end points documentation, check the [Spring Boot Actuator Web API Documentation](https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/actuator-api/html/) 
-and the [Spring Boot Reference Documentation](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/html/)
+For more on Actuator end points documentation, check the [Spring Boot Actuator Web API Documentation](https://docs.spring.io/spring-boot/docs/3.2.0/actuator-api/pdf/spring-boot-actuator-web-api.pdf) 
+and the [Spring Boot Reference Documentation](https://docs.spring.io/spring-boot/docs/3.2.0/reference/htmlsingle/)
 
 ---
  
