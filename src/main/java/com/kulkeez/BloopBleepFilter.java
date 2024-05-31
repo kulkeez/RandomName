@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 */
 @Component
 @Order(1)
-//@WebFilter(filterName = "bloopBleepFilter")
+@WebFilter(filterName = "bloopBleepFilter")
 @Slf4j
 public class BloopBleepFilter implements Filter {
 
