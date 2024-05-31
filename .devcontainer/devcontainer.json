@@ -20,7 +20,8 @@
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"vscjava.vscode-java-pack",
-		"Pivotal.vscode-boot-dev-pack"
+		"Pivotal.vscode-boot-dev-pack", 
+		"vscjava.vscode-spring-boot-dashboard"
 	],
 	
 	"customizations": {
