@@ -12,13 +12,14 @@
 		<relativePath />
 	</parent>
 	  	
-  	<groupId>com.hpe</groupId>
+  	<groupId>com.kulkeez</groupId>
   	<artifactId>random-name</artifactId>
   	<version>0.0.1</version>
   	
   	<name>RandomName</name>
 	<description>Random Name Generator</description>
   	<inceptionYear>2020</inceptionYear>
+	
 	<developers>
 		<developer>
       		<id>kulkeez</id>
@@ -135,7 +136,7 @@
 		<dependency>
 		    <groupId>commons-io</groupId>
 		    <artifactId>commons-io</artifactId>
-		    <version>2.11.0</version>
+		    <version>2.11.0.redhat-00001</version>
 		</dependency>
 
         <dependency>
