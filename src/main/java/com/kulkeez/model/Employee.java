@@ -9,6 +9,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
@@ -27,7 +33,8 @@ public class Employee {
     @Column(name = "id")
     private int id;
 
-    @NonNull 
+    @NotNull
+	@Size(min = 2, message = "Name should have at least 2 characters")
     @Column(name = "name")
     private String name;
 
@@ -48,4 +55,9 @@ public class Employee {
     @Column(name="dept")
     private String dept;
 
+    @Past
+    @Column(name = "birthDate")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonIgnore 	// Sensitive data, therefore, applying static filtering and do not send this field as response
+	private LocalDate birthDate;
 }

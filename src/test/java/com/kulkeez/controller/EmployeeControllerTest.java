@@ -54,9 +54,9 @@ public class EmployeeControllerTest {
 		when(service.retrieveAllEmployees()).thenReturn(
 			Arrays.asList(
 				new Employee(1, "James Gosling", 45, "Male", LocalDate.parse("1980-10-08"), 
-							LocalDate.parse("2020-12-25"), "IT"),
+							LocalDate.parse("2020-12-25"), "IT", LocalDate.parse("1979-12-25")),
 				new Employee(2, "Linus Torvalds", 50, "Male", LocalDate.parse("1973-10-11"), 
-							LocalDate.parse("2022-12-25"), "IT"))
+							LocalDate.parse("2022-12-25"), "IT", LocalDate.parse("1969-12-25")))
 			);						
 			
 
