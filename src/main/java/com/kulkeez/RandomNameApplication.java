@@ -100,6 +100,20 @@ public class RandomNameApplication {
     }
 
 
+    /**
+     * 
+     * 
+     * @param ctx
+     * @return
+     */
+	@Bean
+    public CommandLineRunner onBoot(ApplicationContext ctx) {
+        return args -> {
+        	log.info("onBoot(): perform some initialization on Spring boot here; currently empty ...");
+        	
+        };
+	}  
+
 	@Bean
     public NumberFormat defaultNumberFormat() {
         return NumberFormat.getCurrencyInstance(Locale.getDefault());
