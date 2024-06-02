@@ -3,8 +3,6 @@ package com.kulkeez.controller;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-
-import java.util.Random;
 import java.util.UUID;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 
+ * Demonstrates Lombok logging and creating mock JSON data
  * 
  * @author <a href="mailto:kulkeez@yahoo.com">Vikram Kulkarni</a>
  *
@@ -98,5 +96,6 @@ public class StatusController {
 
         return map;
     }
+	
 }
 
