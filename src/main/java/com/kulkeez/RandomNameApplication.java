@@ -3,15 +3,19 @@ package com.kulkeez;
 import java.util.Arrays;
 import java.util.Locale;
 import java.text.NumberFormat;
-
+import java.time.LocalDate;
 import java.sql.Timestamp;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+
+import com.kulkeez.model.Employee;
+import com.kulkeez.repository.EmployeeRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -53,6 +57,9 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootApplication(exclude = SqlInitializationAutoConfiguration.class)
 @Slf4j
 public class RandomNameApplication {
+
+	@Autowired
+	private EmployeeRepository empRepository;
 
 	/**
 	 * Our main method delegates to Spring Boot’s SpringApplication class by calling run. 
@@ -109,8 +116,28 @@ public class RandomNameApplication {
 	@Bean
     public CommandLineRunner onBoot(ApplicationContext ctx) {
         return args -> {
-        	log.info("onBoot(): perform some initialization on Spring boot here; currently empty ...");
+        	log.info("onBoot(): perform some initialization on Spring boot here.");
         	
+			// Populate some data into H2 database table EMPLOYEE
+			empRepository.save(new Employee(1, 
+									"David Palmer", 
+									40, 
+									"Male", 
+									LocalDate.parse("1980-10-08"), 
+									LocalDate.parse("2020-12-25"), 
+									"HR", 
+									LocalDate.parse("1979-12-25")));
+			
+			empRepository.save(new Employee(2, 
+									"Vikram Kulkarni", 
+									50, "Male", 
+									LocalDate.parse("1973-10-11"), 
+									LocalDate.parse("2003-12-25"), 
+									"IT", 
+									LocalDate.parse("1977-12-25")));
+			
+			log.info("Populated EMPLOYEE table with some records.");
+			log.info("View the H2 Console here: http://localhost:8080/h2-console");
         };
 	}  
 
