@@ -137,6 +137,7 @@ public class RandomNameApplication {
 									LocalDate.parse("1977-12-25")));
 			
 			log.info("Populated EMPLOYEE table with some records.");
+			log.info("View EMPLOYEE table records via REST here: http://localhost:8080/api/v1/employees");
 			log.info("View the H2 Console here: http://localhost:8080/h2-console");
         };
 	}  
