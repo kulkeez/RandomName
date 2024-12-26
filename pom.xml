@@ -8,7 +8,7 @@
    	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.7</version>  <!-- lookup parent from repository -->
+		<version>3.4.1</version>  <!-- lookup parent from repository -->
 		<relativePath />
 	</parent>	
 	  	
@@ -76,7 +76,7 @@
     </profiles>
     	
     <dependencies>
-
+	
 		<!--  To avoid boilerplate code i.e. need for declaring an instance of a logger -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
