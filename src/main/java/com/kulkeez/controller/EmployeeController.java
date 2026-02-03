@@ -23,8 +23,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class EmployeeController {
     
-	@Autowired
 	private EmployeeService service;
+	
+	public EmployeeController(EmployeeService service) {
+		this.service = service;
+	}
 
 	@GetMapping(path = "/employees")
     public List<Employee> fetchAllEmployees() {

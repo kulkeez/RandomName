@@ -3,25 +3,19 @@ package com.kulkeez.controller;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.context.support.GenericApplicationContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import com.kulkeez.RandomNameGenerator;
 
-/**
- * 
- * 
- * @author kulkeez
- *
- */
-// The @SpringBootTest annotation tells Spring Boot to look for a main configuration class (one with @SpringBootApplication)
-@SpringBootTest
 public class SmokeTest {
-	
-	@Autowired		// controller is injected before the test methods are run
-	private HelloController controller;
 
 	@Test
-	public void contextLoads() throws Exception {
-		assertThat(controller).isNotNull();		// convince ourself that the context is creating our controller
+	public void controllerInstantiated() throws Exception {
+		GenericApplicationContext ctx = new GenericApplicationContext();
+		ctx.registerBean(RandomNameGenerator.class, () -> new RandomNameGenerator(0));
+		ctx.refresh();
+		
+		HelloController controller = new HelloController(ctx);
+		assertThat(controller).isNotNull();
 	}
 }

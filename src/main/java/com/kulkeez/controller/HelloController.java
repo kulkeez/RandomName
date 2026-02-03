@@ -29,8 +29,11 @@ public class HelloController {
 
 	private static final String template = "Hello, %s! Greetings from RandomName Generator!";
 	
-	@Autowired
-    ApplicationContext ctx;
+	private ApplicationContext ctx;
+	
+	public HelloController(ApplicationContext ctx) {
+		this.ctx = ctx;
+	}
 	
 	/**
 	 * 

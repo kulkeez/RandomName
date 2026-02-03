@@ -8,7 +8,7 @@
    	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.2</version>  <!-- lookup parent from repository -->
+		<version>4.0.2</version>  <!-- lookup parent from repository -->
 		<relativePath />
 	</parent>	
 	  	
@@ -102,6 +102,13 @@
 		</dependency>
 
 		<!--  Enable Actuator endpoints for monitoring health -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-test-autoconfigure</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!--  Enable Actuator endpoints for monitoring health -->
 		<!--  A new set of RESTful end points are added to the application such as /env, /health, /info, /metrics, /trace and /dump -->
 		<dependency>
             <groupId>org.springframework.boot</groupId>
@@ -150,6 +157,7 @@
                 	</execution>
             	</executions>
 			</plugin>
+			
 			
         </plugins>
         
