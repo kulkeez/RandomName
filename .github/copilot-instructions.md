@@ -4,7 +4,7 @@
 
 **RandomName** is a Spring Boot 4.0 REST API that generates pseudo-random names by combining adjectives and nouns. It demonstrates a complete containerization and Kubernetes deployment pipeline: Java → Docker → Kubernetes.
 
-**Stack**: Spring Boot 4.0, Java 17, Maven 3.9, H2 database, Docker, Kubernetes (KinD)
+**Stack**: Spring Boot 4.0, Java 21, Maven 3.9, H2 database, Docker, Kubernetes (KinD)
 **Key Libraries**: Spring Data JPA, Lombok, SLF4J, JUnit 5, AssertJ
 
 ## Architecture & Key Components
@@ -96,7 +96,7 @@ This pattern improves testability—see `EmployeeControllerTest` for testing wit
 | File | Purpose |
 |------|---------|
 | [pom.xml](pom.xml) | Maven POM with Spring Boot parent, dev/prod profiles |
-| [Dockerfile](Dockerfile) | Multi-stage build using `eclipse-temurin:17` |
+| [Dockerfile](Dockerfile) | Multi-stage build using `eclipse-temurin:21` |
 | [application.properties](src/main/resources/application.properties) | Server (8080), Actuator endpoints, H2 config |
 | [RandomNameApplication.java](src/main/java/com/kulkeez/RandomNameApplication.java) | Spring Boot app entry point with CommandLineRunner |
 | [RandomNameGenerator.java](src/main/java/com/kulkeez/RandomNameGenerator.java) | Core generation logic |

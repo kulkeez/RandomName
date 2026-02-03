@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17
+FROM eclipse-temurin:21
 
 LABEL name="RandomName Generator" \
     license="GPLv2" \
