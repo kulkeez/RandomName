@@ -23,7 +23,8 @@
 		"Pivotal.vscode-boot-dev-pack", 
 		"vscjava.vscode-spring-boot-dashboard",
 		"GitHub.copilot",
-        "GitHub.copilot-chat"
+        "GitHub.copilot-chat",
+        "streetsidesoftware.code-spell-checker"
 	],
 	
 	"customizations": {
